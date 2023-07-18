@@ -1,0 +1,19 @@
+{
+  "name": "prueba_tecnica",
+  "version": "1.0.0",
+  "description": "prueba tecnica para la empresa oppo para analista programador",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Evelo00/Prueba-Oppo.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eyver Vergara",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "pg": "^8.11.1"
+  }
+}
