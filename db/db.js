@@ -1,38 +1,32 @@
+const { Pool } = require("pg");
+const { Sequelize } = require("sequelize");
+const elementosModel = require("./modules/elementos");
 require("dotenv").config();
-import { Pool } from "pg";
 
-// Configuración de conexión a la base de datos
 const pool = new Pool({
-  user: process.env.DB_USER,
   host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
+  user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
+  database: "elementos",
   port: process.env.DB_PORT,
 });
 
-const crearTablaElementos = async () => {
-  const createTableQuery = `
-    CREATE TABLE IF NOT EXISTS elementos (
-      id SERIAL PRIMARY KEY,
-      peso INTEGER,
-      calorias INTEGER
-    );
-  `;
-
-  try {
-    await pool.query(createTableQuery);
-    console.log("Tabla elementos creada exitosamente.");
-  } catch (error) {
-    console.error("Error al crear la tabla elementos:", error);
+const sequelize = new Sequelize(
+  process.env.DB_DATABASE,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: "postgres",
   }
-};
+);
 
-const cerrarConexion = () => {
-  pool.end();
-  console.log("Conexión a la base de datos cerrada.");
-};
+const Elementos = elementosModel(sequelize);
+sequelize.sync({ force: false }).then(() => {
+  console.log("Tabla elementos creada exitosamente.");
+});
 
-export default {
-  crearTablaElementos,
-  cerrarConexion,
+module.exports = {
+  pool,
+  Elementos,
 };

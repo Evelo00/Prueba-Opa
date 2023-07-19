@@ -1,10 +1,10 @@
 
-const resultadosContainer = document.getElementById('resultados');
-// const resultados = [];
+// const resultadosContainer = document.getElementById('resultados');
+const resultados = [];
 
-const elementosOptimos = obtenerElementosOptimos(elementos, minCalorias, maxPeso);
+// const elementosOptimos = obtenerElementosOptimos(elementos, minCalorias, maxPeso);
 
-// Obtener los elementos HTML relevantes
+
 const listaElementos = document.getElementById('listaElementos');
 const pesoTotalElemento = document.getElementById('pesoTotal');
 const caloriasTotalesElemento = document.getElementById('caloriasTotales');

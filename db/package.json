@@ -1,0 +1,16 @@
+{
+  "name": "proyecto-db",
+  "version": "1.0.0",
+  "description": "base de datos para la prueba tecnica oppo",
+  "main": "db.js",
+  "scripts": {
+    "start": "node db.js"
+  },
+  "author": "Eyver vergara",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.1",
+    "sequelize": "^6.32.1"
+  }
+}
