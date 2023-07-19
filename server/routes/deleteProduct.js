@@ -1,7 +1,7 @@
 const express = require("express");
 const { Elemento } = require("../db.js");
 const router = express.Router();
-
+// si encuentra el elemento lo elimina y devuelve el elemento eliminado en formato JSON y si no lo encuentra devuelve un mensaje de error en formato JSON
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
