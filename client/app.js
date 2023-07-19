@@ -1,22 +1,23 @@
+import ProductModel from "./model.js";
+import ProductController from "./controller.js";
+import ProductView from "./view.js";
 
-// const resultadosContainer = document.getElementById('resultados');
-const resultados = [];
+const ProductApp = {
+  async init() {
+    try {
+      const products = await ProductModel.getAllProducts();
+      ProductView.renderProducts(products);
+      ProductController.init(products);
+    } catch (error) {
+      console.error(error.message);
+    }
 
-// const elementosOptimos = obtenerElementosOptimos(elementos, minCalorias, maxPeso);
+    const productForm = document.getElementById("productForm");
+    productForm.addEventListener(
+      "submit",
+      ProductController.handleFormSubmit.bind(ProductController)
+    );
+  },
+};
 
-
-const listaElementos = document.getElementById('listaElementos');
-const pesoTotalElemento = document.getElementById('pesoTotal');
-const caloriasTotalesElemento = document.getElementById('caloriasTotales');
-
-listaElementos.innerHTML = '';
-
-elementosOptimos.conjuntoOptimo.forEach(elemento => {
-  const li = document.createElement('li');
-  li.classList.add('list-group-item');
-  li.textContent = `Elemento ${elemento.id} - Peso: ${elemento.peso} - Calorías: ${elemento.calorias}`;
-    listaElementos.appendChild(li);
-});
-
-pesoTotalElemento.textContent = `Peso total: ${elementosOptimos.pesoTotalOptimo}`;
-caloriasTotalesElemento.textContent = `Calorías totales: ${elementosOptimos.caloriasTotalOptimo}`;
+ProductController.init();

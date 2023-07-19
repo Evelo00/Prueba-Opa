@@ -13,7 +13,6 @@ const sequelize = new Sequelize(
 );
 
 const Elemento = elementosModel(sequelize);
-console.log(Elemento + " aqui");
 
 // Agrega esta función para crear un elemento inicial al iniciar la base de datos
 async function createInitialElement() {
